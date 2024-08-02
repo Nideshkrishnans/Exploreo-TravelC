@@ -1,0 +1,34 @@
+#abus{
+    background-color: black;
+    background-image: url('./assets/abbackround3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#ourm{
+    background-image: linear-gradient(to right,rgb(48, 37, 80),rgb(39, 29, 66));
+}
+/* #abcard{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/030/698/588/large_2x/purple-minimalist-wallpaper-high-quality-4k-hdr-free-photo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    color: white;
+} */
+
+/* Custom CSS for the timeline */
+.vertical-timeline-element--work .vertical-timeline-element-title {
+    color: #fff;
+  }
+  
+  .vertical-timeline-element--education .vertical-timeline-element-title {
+    color: #fff;
+  }
+
+
+  @media (min-width:400px){
+    #hytcard{
+        position:fixed;
+        margin-top: 0px;
+    }
+  } 
