@@ -6,7 +6,6 @@ import Home from './pages/Home'
 import Logreg from './pages/Logreg'
 import Chatwindow from './pages/Chatwindow'
 import Profile from './pages/Profile'
-import Header from './components/Header'
 import Aboutus from './pages/Aboutus'
 
 
@@ -14,7 +13,10 @@ function App() {
 
   return (
     <>
+<<<<<<< HEAD
     
+=======
+>>>>>>> 36d2504539fbed650d1806c700e8fe110bdd3a2b
      <Routes>
       <Route path='/' element={<Landing/>}/>
       <Route path='/home' element={<Home/>}/>
@@ -23,7 +25,10 @@ function App() {
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/aboutus' element={<Aboutus/>}/>
      </Routes>
+<<<<<<< HEAD
      
+=======
+>>>>>>> 36d2504539fbed650d1806c700e8fe110bdd3a2b
     </>
   )
 }
