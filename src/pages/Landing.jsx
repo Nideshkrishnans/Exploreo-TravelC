@@ -1,6 +1,6 @@
-import { height } from '@fortawesome/free-brands-svg-icons/fa42Group'
 import React from 'react'
 import sunset from '../assets/sunset.jpg'
+import Footer from '../components/Footer'
 
 function Landing() {
   return (
@@ -13,6 +13,8 @@ function Landing() {
     <div> 
     <img src={sunset} alt="no-image" width='100%' />
     </div>
+
+    <Footer/>
     </>
   )
 }
