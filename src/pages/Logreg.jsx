@@ -15,7 +15,7 @@ function Logreg() {
           <Components.Input type="text" placeholder="Name" />
           <Components.Input type="email" placeholder="Email" />
           <Components.Input type="password" placeholder="Password" />
-          <Link to={'/home'}><Components.Button>Sign Up</Components.Button></Link>
+          <Link><Components.Button>Sign Up</Components.Button></Link>
         </Components.Form>
       </Components.SignUpContainer>
       <Components.SignInContainer signingIn={signIn}>

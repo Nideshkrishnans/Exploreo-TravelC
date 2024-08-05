@@ -24,11 +24,3 @@
   .vertical-timeline-element--education .vertical-timeline-element-title {
     color: #fff;
   }
-
-
-  @media (min-width:400px){
-    #hytcard{
-        position:fixed;
-        margin-top: 0px;
-    }
-  } 
