@@ -4,12 +4,15 @@ import { width } from '@mui/system';
 import React from 'react'
 import { VerticalTimeline,VerticalTimelineElement } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 
 
 function Aboutus() {
   return (
     <>
+    <Header/>
     <div className=''>
     <div style={{backgroundColor:'rgb(146, 133, 159)'}}>
     <h1 className='text-center pt-5 fw-bolder m-0 text-light' >About Us </h1>
@@ -137,7 +140,7 @@ function Aboutus() {
     </div>
     
 
-
+    <Footer/>
 
     </>
   )

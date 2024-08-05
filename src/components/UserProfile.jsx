@@ -1,5 +1,7 @@
 import React from 'react'
 import user from '../assets/user.png'
+import Editprofile from './Editprofile'
+import Uploadfeed from './Uploadfeed'
 
 function UserProfile() {
   return (
@@ -21,8 +23,8 @@ function UserProfile() {
               </div>
 
               <div className="mb-3 my-5">
-              <button className='btn btn-warning'>Edit Profile</button>
-              <button className='btn btn-warning ms-4'>Upload feed</button>
+              <Editprofile/>
+              <Uploadfeed />
             </div>
         </div>
     </>
