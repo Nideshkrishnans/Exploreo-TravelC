@@ -54,16 +54,30 @@ function Feedcard() {
 
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title className='text-center fw-bold'>Let's know more</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <div className="mb-3">
+          <input type="text" placeholder='Starting' className='form-control'/>
+          </div>
+          <div className="mb-3">
+          <input type="text" placeholder='Destination' className='form-control'/>
+          </div>
+          <div className="mb-3">
+          <input type="text" placeholder='Date' className='form-control'/>
+          </div>
+          <div className="mb-3">
+            <textarea name="Description" id="" className='form-control' rows={9}></textarea>
+          </div>
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+
+          <div className='d-flex'>
+            <h6 className='fw-bold mt-2 me-3'>Have a chat with them ?</h6>
+            <Button variant="primary" onClick={handleClose}>
+              Chat
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </>

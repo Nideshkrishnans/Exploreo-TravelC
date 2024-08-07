@@ -14,9 +14,11 @@ function Uploadfeed() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title className='fw-bold'>Moment of the Day</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+        <textarea name="Description" id="" className='form-control' rows={9} placeholder='Share your moments here'></textarea>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
