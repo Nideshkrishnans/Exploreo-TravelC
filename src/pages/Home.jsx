@@ -53,16 +53,29 @@ function Home() {
           
           </div>
 
-          <Modal show={show} onHide={handleClose}>
+          <Modal show={show} onHide={handleClose} size='md'>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>It's your turn to show up!!!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body className='d-flex justify-content-center flex-column align-items-center'>
+          <div className="mb-3">
+            <input type="text" placeholder='Starting' className='form-control'/>
+          </div>
+          <div className="mb-3">
+          <input type="text" placeholder='Destination' className='form-control'/>
+          </div>
+          <div className="mb-3">
+          <input type="date" placeholder='Date' className='form-control'/>
+          </div>
+          <div className="mb-3">
+          <input type="text" placeholder='Estd. Price' className='form-control'/>
+          </div>
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="danger" onClick={handleClose}>
+            Discard
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="success" onClick={handleClose}>
             Save Changes
           </Button>
         </Modal.Footer>
