@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 function Logreg() {
   const [signIn, toggle] = React.useState(true);
 
+  const handleRegister=()=>{
+    alert('hai')
+  }
+
   return (
     <div className='w-100 d-flex justify-content-center align-items-center my-5 py-5'>
     <Components.Container>
@@ -15,7 +19,7 @@ function Logreg() {
           <Components.Input type="text" placeholder="Name" />
           <Components.Input type="email" placeholder="Email" />
           <Components.Input type="password" placeholder="Password" />
-          <Link><Components.Button>Sign Up</Components.Button></Link>
+          <Link><Components.Button onClick={handleRegister}>Sign Up</Components.Button></Link>
         </Components.Form>
       </Components.SignUpContainer>
       <Components.SignInContainer signingIn={signIn}>
