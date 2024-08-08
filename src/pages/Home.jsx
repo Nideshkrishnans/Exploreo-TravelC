@@ -6,6 +6,7 @@ import Postfeed from '../components/Postfeed'
 import  { useState, lazy, Suspense } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Search from '../components/Search'
 
 /* const ComponentA = lazy(() => import('../components/Feedcard'));
 const ComponentB = lazy(() => import('../components/Postfeed')); */
@@ -27,26 +28,30 @@ function Home() {
     
       <>
       <Header/>
-        <div className="row w-100 p-4 ">
-          <div className="col-md-5 p-4 d-flex justify-content-center align-items-center"  style={{height:'50vh'}}>
-          <div className="hytcard card d-flex justify-content-center align-items-center ms-md-5" id='hytcard' >
-            <div className='p-5' style={{backgroundColor:'coral'}}>
-              <h3>Mood for a trip?</h3>
-              <button className='btn btn-success w-100' variant="primary" onClick={handleShow}>Host a Trip</button>
+        <div className="row w-100">
+          <div className="col-md-5 p-4 d-flex justify-content-center align-items-center bg-light rounded" >
+          <div className="hytcard card rounded d-flex justify-content-center align-items-center" id='hytcard' >
+            <div className='' >
+              <h3 className='text-light'>Mood for a trip?</h3>
+              <button className='btn btn-light w-100' variant="primary" onClick={handleShow}>Host a Trip</button>
             </div>
             <div>
-              <a onClick={() => handleButtonClick('Feedcard')}>Live events</a>
+              <button className='btn btn-light mt-3' onClick={() => handleButtonClick('Feedcard')} id='hytbutton'>Live events</button>
             </div>
             <div>
-              <button className='btn btn-outkine-light'>Upcoming</button>
+              <button className='btn btn-light mt-3' id='hytbutton'>Upcoming</button>
             </div>
             <div>
-              <a onClick={() => handleButtonClick('Postfeed')}>Feed</a>
+              <button className='btn btn-light mt-3' onClick={() => handleButtonClick('Postfeed')} id='hytbutton'>Feed</button>
             </div>
             
           </div>
           </div>
-          <div className="col-md-7" style={{overflowY:'scroll', height:'100vh'}}>
+          <div className="col-md-7" id='homeleft' style={{overflowY:'scroll', height:'100vh'}}>
+
+            <div className='my-4 '>
+            <Search/>
+            </div>
 
              {component === 'Feedcard' ? <Feedcard /> : <Postfeed />}
    

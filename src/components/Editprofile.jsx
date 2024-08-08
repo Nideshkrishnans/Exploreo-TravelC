@@ -11,7 +11,7 @@ function Editprofile() {
 
   return (
     <>
-    <button className='btn btn-warning' variant="primary" onClick={handleShow}>Edit Profile</button>
+    <button className='btn' style={{color:'white',backgroundColor:'#27192f'}} variant="primary" onClick={handleShow}>Edit Profile</button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
