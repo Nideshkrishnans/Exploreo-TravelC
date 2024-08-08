@@ -1,5 +1,5 @@
 import React from 'react'
-import user from '../assets/user.png'
+import dp from '../assets/dp.jpg'
 import Editprofile from './Editprofile'
 import Uploadfeed from './Uploadfeed'
 
@@ -8,10 +8,10 @@ function UserProfile() {
     <>
     <div className="container d-flex justify-content-center align-items-center flex-column shadow rounded my-4 p-3" >
         <div>
-            <img src={user} alt="" style={{width:'250px'}}/>
+            <img src={dp} alt="" style={{width:'250px',borderRadius:'50%'}}/>
         </div>
         <div>
-            <h2 className='fw-bold'>AjuAkuEsh</h2>
+            <h2 className='fw-bold mt-3'>AjuAkuEsh</h2>
         </div>
         <div>
             <p className='text-center my-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt commodi vel ipsam nostrum ad similique impedit neque. Doloribus sed qui nisi? Ullam explicabo rerum quis incidunt vitae itaque praesentium nihil.</p>

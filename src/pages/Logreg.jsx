@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { getUserApi, registerApi } from '../../server/allApi'
 import * as Components from './Lrstyle'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+
 
 
 function Logreg() {
+  const navigate = useNavigate()
   const [signIn, toggle] = React.useState(true);
-
-  const handleRegister=()=>{
-    alert('hai')
-  }
 
   return (
     <div className='w-100 d-flex justify-content-center align-items-center my-5 py-5'>
@@ -19,7 +18,7 @@ function Logreg() {
           <Components.Input type="text" placeholder="Name" />
           <Components.Input type="email" placeholder="Email" />
           <Components.Input type="password" placeholder="Password" />
-          <Link><Components.Button onClick={handleRegister}>Sign Up</Components.Button></Link>
+          <Link><Components.Button>Sign Up</Components.Button></Link>
         </Components.Form>
       </Components.SignUpContainer>
       <Components.SignInContainer signingIn={signIn}>

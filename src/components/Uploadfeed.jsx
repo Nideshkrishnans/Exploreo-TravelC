@@ -10,7 +10,7 @@ function Uploadfeed() {
 
   return (
     <>
-    <button className='btn btn-warning ms-3' variant="primary" onClick={handleShow}>Upload post</button>
+    <button className='btn ms-3'style={{color:'white',backgroundColor:'#27192f'}} variant="primary" onClick={handleShow}>Upload post</button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

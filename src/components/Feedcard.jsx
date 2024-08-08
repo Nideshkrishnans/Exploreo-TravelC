@@ -1,10 +1,11 @@
 import React from 'react'
-import user from '../assets/user.png'
+import dp from '../assets/dp.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { borderRadius } from '@mui/system';
 
 
 function Feedcard() {
@@ -16,14 +17,14 @@ function Feedcard() {
   return (
     <>
     <div className='d-flex align-items-center justify-content-center flex-column '>
-    <div className='p-2 shadow card w-85 my-4' style={{backgroundColor:"#f0a88c"}}>
+    <div className='p-2 shadow card w-85 my-4' style={{backgroundColor:"white"}}>
       <div className="row ">
         <div className="col-md-3 d-flex align-items-center justify-content-center flex-column">
-          <img src={user} alt="no image" width={'50px'}/>
-          <h5>Username</h5>
+          <img src={dp} alt="no image" style={{width:'50px',borderRadius:'50%'}}/>
+          <h6 className='mt-2'>Username</h6>
         </div>
         <div className="col-md-6 ">
-          <div className="row border border-dark border-2 rounded p-3 ">
+          <div className="row rounded p-3 px-4 " style={{border:"#27192f 2px solid" }}>
             <div className="col-md-4 align-items-center justify-content-center d-flex flex-column">
               <h5>Starting</h5>
               <p>1/1/2024</p>
@@ -46,7 +47,7 @@ function Feedcard() {
           </div>
         </div>
         <div className="col-md-3 align-items-center justify-content-center d-flex">
-          <button className='btn btn-primary' variant="primary" onClick={handleShow}>More Details</button>
+          <button className='btn' style={{backgroundColor:'#27192f',color:'white'}} variant="primary" onClick={handleShow}>More Details</button>
         </div>
       </div>
     </div>
@@ -58,7 +59,7 @@ function Feedcard() {
         </Modal.Header>
         <Modal.Body>
           <div className="mb-3">
-          <input type="text" placeholder='Starting' className='form-control'/>
+          <p className='border border-1 rounded'>Starting</p>
           </div>
           <div className="mb-3">
           <input type="text" placeholder='Destination' className='form-control'/>

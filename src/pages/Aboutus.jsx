@@ -7,14 +7,14 @@ import 'react-vertical-timeline-component/style.min.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
+// '#27192f' 'rgb(146, 133, 159)'
 
 function Aboutus() {
   return (
     <>
     <Header/>
     <div className=''>
-    <div style={{backgroundColor:'rgb(146, 133, 159)'}}>
+    <div id="abdiv">
     <h1 className='text-center pt-5 fw-bolder m-0 text-light' >About Us </h1>
     <p className='p-5 text-center m-0 text-light fs-5'>Welcome to <b>Exploreo</b>, your ultimate travel companion finder! Our mission is to connect like-minded travelers who share a passion for exploring the world and experiencing new cultures. Whether you're a solo adventurer, a couple looking for fellow travelers, or a group planning a trip together, TravelBuddy is here to help you find the perfect travel companions.</p>
     </div>
