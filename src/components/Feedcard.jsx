@@ -58,7 +58,7 @@ function Feedcard() {
         </Modal.Header>
         <Modal.Body>
           <div className="mb-3">
-          <input type="text" placeholder='Starting' className='form-control'/>
+          <p className='border border-1 rounded'>Starting</p>
           </div>
           <div className="mb-3">
           <input type="text" placeholder='Destination' className='form-control'/>

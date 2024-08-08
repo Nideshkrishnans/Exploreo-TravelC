@@ -58,17 +58,23 @@ function Home() {
           <Modal.Title>It's your turn to show up!!!</Modal.Title>
         </Modal.Header>
         <Modal.Body className='d-flex justify-content-center flex-column align-items-center'>
-          <div className="mb-3">
-            <input type="text" placeholder='Starting' className='form-control'/>
+          <div className="mb-3 w-100 d-flex justify-content-center flex-column align-items-center">
+            <input type="text" placeholder='title' className='form-control w-100'/>
           </div>
-          <div className="mb-3">
+          <div className="mb-3 d-flex justify-content-center align-items-center w-100">
+          <input type="text" placeholder='Starting point' className='form-control me-2'/>
           <input type="text" placeholder='Destination' className='form-control'/>
           </div>
-          <div className="mb-3">
-          <input type="date" placeholder='Date' className='form-control'/>
+          <div className="mb-3 d-flex justify-content-center align-items-center w-100">
+          <input type="date" placeholder='start date' className='form-control me-2'/>
+          <input type="date" placeholder='end Date' className='form-control'/>
           </div>
-          <div className="mb-3">
-          <input type="text" placeholder='Estd. Price' className='form-control'/>
+          <div className="mb-3 d-flex justify-content-center align-items-center w-100">
+          <input type="text" placeholder='Estd. Price in rupees' className='form-control me-2'/>
+          <input type="text" placeholder='no.of people' className='form-control'/>
+          </div>
+          <div className="mb-3 w-100">
+         <textarea name="" placeholder='Describe your trip' rows={5} className='form-control'></textarea>
           </div>
         </Modal.Body>
         <Modal.Footer>
@@ -76,7 +82,7 @@ function Home() {
             Discard
           </Button>
           <Button variant="success" onClick={handleClose}>
-            Save Changes
+            Host
           </Button>
         </Modal.Footer>
       </Modal>
