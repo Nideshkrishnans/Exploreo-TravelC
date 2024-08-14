@@ -1,6 +1,6 @@
 
 import {commonApi} from './commonApi';
-const serverURl = "http://localhost:3000"
+const serverURl = "https://exploreo-server.onrender.com"
 
 //register
 export const registerApi=async(reqBody)=>{
