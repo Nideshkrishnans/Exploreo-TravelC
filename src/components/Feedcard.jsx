@@ -5,76 +5,110 @@ import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { borderRadius } from '@mui/system';
+import { deleteTripCard } from '../../server/allApi';
 
 
-function Feedcard() {
+function Feedcard({trips}) {
   const [show, setShow] = useState(false);
+  const [userName,setUserName]=useState(sessionStorage.getItem("userName"))
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleDeletetrip =async(id)=>{
+     deleteTripCard(id)
+  }
+
+  
+
   return (
     <>
-    <div className='d-flex align-items-center justify-content-center flex-column '>
-    <div className='p-2 shadow card w-85 my-4' style={{backgroundColor:"white"}}>
-      <div className="row ">
-        <div className="col-md-3 d-flex align-items-center justify-content-center flex-column">
+    <div className='d-flex align-items-center justify-content-center flex-column w-100'>
+    <div className='p-2 shadow card w-100 my-4' style={{backgroundColor:"white"}}>
+      <div className="row w-100">
+        <div className="col-md-2 d-flex align-items-center justify-content-center flex-column">
           <img src={dp} alt="no image" style={{width:'50px',borderRadius:'50%'}}/>
-          <h6 className='mt-2'>Username</h6>
+          <h6 className='mt-2'>{trips?.userName}</h6>
         </div>
-        <div className="col-md-6 ">
-          <div className="row rounded p-3 px-4 " style={{border:"#27192f 2px solid" }}>
-            <div className="col-md-4 align-items-center justify-content-center d-flex flex-column">
-              <h5>Starting</h5>
-              <p>1/1/2024</p>
+        <div className="col-md-8 ">
+          <div className="row w-100 rounded p-3 ms-2 ms-md-0 " style={{border:"#27192f 2px solid" }}>
+            <div className="col-md-5 align-items-center justify-content-center d-flex flex-column">
+              <h5>{trips?.startingpoint}</h5>
+              <p>{trips?.startdate}</p>
             </div>
-            <div className="col-md-4 align-items-center justify-content-center d-flex flex-column">
+            <div className="col-md-2 align-items-center justify-content-center d-flex flex-column">
             <FontAwesomeIcon icon={faArrowsLeftRight} className='fa-3x'/>
             </div>
-            <div className="col-md-4 align-items-center justify-content-center d-flex flex-column">
-              <h5>Destination</h5>
-              <p>1/1/2024</p>
+            <div className="col-md-5 align-items-center justify-content-center d-flex flex-column">
+              <h5>{trips?.destination}</h5>
+              <p>{trips?.enddate}</p>
             </div>
           </div>
-          <div className="row mt-md-3">
+          <div className="row mt-md-3 w-100">
               <div className="col-md-6 align-items-center justify-content-center d-flex">
-                <h6>Est. Price</h6>
+                <h6>Est. Price: {trips?.price}</h6>
               </div>
               <div className="col-md-6 align-items-center justify-content-center d-flex">
-                <h6>Expected People</h6>
+                <h6>Max People: {trips?.people}</h6>
               </div>
           </div>
         </div>
-        <div className="col-md-3 align-items-center justify-content-center d-flex">
-          <button className='btn' style={{backgroundColor:'#27192f',color:'white'}} variant="primary" onClick={handleShow}>More Details</button>
+        <div className="col-md-2 align-items-center justify-content-center d-flex flex-column">
+          <button className='btn' style={{backgroundColor:'#27192f',color:'white'}} variant="primary" onClick={handleShow}>Details</button>
+          {trips?.userName == `${userName}` &&
+            <button className='btn mt-3' style={{backgroundColor:'#27192f',color:'white'}} variant="primary" onClick={()=>handleDeletetrip(trips?.id)} >Delete</button>}
         </div>
       </div>
     </div>
     </div>
 
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} size='lg' centered>
         <Modal.Header closeButton>
-          <Modal.Title className='text-center fw-bold'>Let's know more</Modal.Title>
+          <Modal.Title className='text-center fw-bold'>{trips?.title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <div className="mb-3">
-          <p className='border border-1 rounded'>Starting</p>
+        <Modal.Body className='align-items-center'>
+          <p><span className='fw-bold'>{trips?.userName}</span> : " {trips?.description} "</p>
+          <div className="row">
+            <div className="col-md-6">
+              <ul>
+                <li>Starting Point: <span className='fw-bold'>{trips?.startingpoint}</span></li>
+                <li>Start Date: <span className='fw-bold'>{trips?.startdate}</span></li>
+              </ul>
+            </div>
+            <div className="col-md-6">
+              <ul>
+                <li>Destination: <span className='fw-bold'>{trips?.destination}</span></li>
+                <li>End Date: <span className='fw-bold'>{trips?.enddate}</span></li>
+              </ul>
+            </div>
           </div>
-          <div className="mb-3">
-          <input type="text" placeholder='Destination' className='form-control'/>
+
+          <p>There should be changes in estimated price and no.of Participants, to know more contact our trip partner </p>
+
+          <div className="row text-center">
+            <div className="col-md6">
+              <ul style={{listStyleType:"none"}}>
+                <li>Average Estimated price: <span className='fw-bold'>{trips?.price}</span></li>
+              </ul>
+            </div>
+            <div className="col-md6">
+              <ul style={{listStyleType:"none"}}>
+                <li>Participants: <span className='fw-bold'>Maximum {trips?.people}</span></li>
+              </ul>
+
+            </div>
           </div>
-          <div className="mb-3">
-          <input type="text" placeholder='Date' className='form-control'/>
-          </div>
-          <div className="mb-3">
-            <textarea name="Description" id="" className='form-control' rows={9}></textarea>
-          </div>
+
+
+          <hr />
+          <h3 className='text-center text-danger'>Celebrate our Journey</h3>
+          
         </Modal.Body>
         <Modal.Footer>
 
           <div className='d-flex'>
-            <h6 className='fw-bold mt-2 me-3'>Have a chat with them ?</h6>
+            <h6 className='fw-bold mt-2 me-3'>Have a chat with {trips?.userName} ?</h6>
             <Button variant="primary" onClick={handleClose}>
               Chat
             </Button>

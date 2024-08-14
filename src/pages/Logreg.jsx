@@ -69,7 +69,7 @@ function Logreg() {
       
       if (users) {
         console.log(users.data);
-        const userExists = users.data.some(user => user.email === lemail);
+        const userExists = users.data.find(user => user.email === lemail);
         const userPassword = users.data.some(user => user.password === lpassword);
 
         console.log(userExists);
@@ -77,6 +77,9 @@ function Logreg() {
         
         if(userExists && userPassword){
           alert('loggin successfully')
+          sessionStorage.setItem("userName",userExists.userName)
+          
+
           navigate('/home')
         }
         else{

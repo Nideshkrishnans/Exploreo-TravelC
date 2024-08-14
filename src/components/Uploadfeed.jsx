@@ -1,12 +1,40 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { postfeedApi } from '../../server/allApi';
 
 function Uploadfeed() {
   const [show, setShow] = useState(false);
+  const [userName,setUserName]=useState(sessionStorage.getItem("userName"))
+
+  const [feed, setFeed] = useState({
+    userName:`${userName}`,
+    comment:""
+  })
+  //console.log(feed);
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleUploadFeed = async(e) =>{
+    e.preventDefault()
+    const {userName , comment} =feed 
+    if(!userName || !comment){
+      alert ('please add your comments')
+    }
+    else{
+      const result = await postfeedApi(feed)
+      console.log(result);
+      alert ('your comments added successfully')
+      setFeed({
+        userName:`${userName}`,
+        comment:""}
+      )
+      setShow(false)
+    }
+
+  }
 
   return (
     <>
@@ -17,14 +45,14 @@ function Uploadfeed() {
           <Modal.Title className='fw-bold'>Moment of the Day</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <textarea name="Description" id="" className='form-control' rows={9} placeholder='Share your moments here'></textarea>
+        <textarea name="Description" id="" className='form-control' rows={9} placeholder='Share your moments here' onChange={(e)=>setFeed({...feed,comment:e.target.value})} value={feed.comment}></textarea>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            DISCARD
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" onClick={handleUploadFeed}>
+            POST
           </Button>
         </Modal.Footer>
       </Modal>

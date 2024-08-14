@@ -1,33 +1,80 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import dp from '../assets/dp.jpg'
 import Editprofile from './Editprofile'
 import Uploadfeed from './Uploadfeed'
+import {getProfileApi} from '../../server/allApi'
+import Updateprofile from './Updateprofile'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart, faLanguage, faLocationDot, faMobile, faSchool, faSmoking, faUser, faWineGlass } from '@fortawesome/free-solid-svg-icons'
 
-function UserProfile() {
+function UserProfile () {
+
+  const [profileDetails , setProfileDetails] = useState([]) 
+  const [userName,setUserName]=useState(sessionStorage.getItem("userName"))
+
+
+const getprofiledetails = async()=>{
+  const result = await getProfileApi()
+  setProfileDetails(result.data.map((item)=>item).filter((item)=>item.userName==`${userName}`))
+}
+
+console.log(profileDetails);
+sessionStorage.setItem("userProfileId",profileDetails[0]?.id)
+
+
+
+useEffect(()=>{getprofiledetails()},[])
+
   return (
     <>
-    <div className="container d-flex justify-content-center align-items-center flex-column shadow rounded my-4 p-3" >
-        <div>
-            <img src={dp} alt="" style={{width:'250px',borderRadius:'50%'}}/>
-        </div>
-        <div>
-            <h2 className='fw-bold mt-3'>AjuAkuEsh</h2>
-        </div>
-        <div>
-            <p className='text-center my-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt commodi vel ipsam nostrum ad similique impedit neque. Doloribus sed qui nisi? Ullam explicabo rerum quis incidunt vitae itaque praesentium nihil.</p>
-        </div>
-              <div className='d-flex'>
-                <p className='border me-2 rounded-5 px-3 py-1'>Male</p>
-                <p className='border me-2 rounded-5 px-3 py-1'>No Smoking</p>
-                <p className='border rounded-5 px-3 py-1'>No Alcohol</p>
-              </div>
+{profileDetails[0] ?
 
-              <div className="mb-3 my-5">
-              <Editprofile/>
-              <Uploadfeed />
-            </div>
+     <div className="container shadow rounded my-4 p-3 " >
+     
+        <div className='text-center'>
+        <img src={dp} alt="" style={{width:'50px',borderRadius:'50%'}}/>
+
+          <h2 className='fw-bold mt-3'>{profileDetails[0]?.userName}</h2>
+          
+          <p style={{textAlign:'justify'}}>{profileDetails[0]?.bio}</p>
         </div>
-    </>
+
+        <div className="row ">
+          <div className="col-md-5 text-center">
+            <h5 className='fw-bold'>Personal Details</h5>
+            <p>{profileDetails[0]?.gender && <FontAwesomeIcon icon={faUser} />} {profileDetails[0]?.gender} {profileDetails[0]?.age}</p>
+            <p>{profileDetails[0]?.phonenum && <FontAwesomeIcon icon={faMobile} />} {profileDetails[0]?.phonenum}</p>
+            <p>{profileDetails[0]?.education && <FontAwesomeIcon icon={faSchool} />} {profileDetails[0]?.education}</p>
+            <p>{profileDetails[0]?.location && <FontAwesomeIcon icon={faLocationDot} />} {profileDetails[0]?.location}</p>
+         
+          </div>
+          <div className="col-md-2 d-flex justify-content-around align-items-center">
+            <div className='border bordered-dark' style={{height:"100%",width:"2px",backgroundColor:"black"}}></div>
+          </div>
+          <div className="col-md-5 text-center">
+          <h5 className='fw-bold'>Other Details</h5>
+          <p>{profileDetails[0]?.language && <FontAwesomeIcon icon={faLanguage} />} {profileDetails[0]?.language} </p>
+          <p>{profileDetails[0]?.drinking && <FontAwesomeIcon icon={faWineGlass} />} {profileDetails[0]?.drinking}</p>
+          <p>{profileDetails[0]?.smoking && <FontAwesomeIcon icon={faSmoking} />} {profileDetails[0]?.smoking}</p>
+          <p>{profileDetails[0]?.relationship && <FontAwesomeIcon icon={faHeart} />} {profileDetails[0]?.relationship}</p>
+
+
+          </div>
+        </div>
+              
+
+        <div className="mb-3 my-5 d-flex justify-content-around align-items-center">
+          <Updateprofile/>
+          <Uploadfeed />
+        </div>
+      </div>
+      :
+      <div className='w-100 p-5 ms-md-5 '>
+        <div className='ms-md-5'><Editprofile/></div>
+      </div>
+      }
+      
+    </> 
   )
 }
 
