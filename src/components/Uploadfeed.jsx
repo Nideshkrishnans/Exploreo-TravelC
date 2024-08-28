@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { postfeedApi } from '../../server/allApi';
 
-function Uploadfeed() {
+function Uploadfeed({setAddPostStatus}) {
   const [show, setShow] = useState(false);
   const [userName,setUserName]=useState(sessionStorage.getItem("userName"))
 
@@ -25,8 +25,9 @@ function Uploadfeed() {
     }
     else{
       const result = await postfeedApi(feed)
-      console.log(result);
+      //console.log(result);
       alert ('your comments added successfully')
+      setAddPostStatus(result.data)
       setFeed({
         userName:`${userName}`,
         comment:""}
@@ -34,6 +35,15 @@ function Uploadfeed() {
       setShow(false)
     }
 
+  }
+
+  const handleClose1=()=>{
+    setFeed(
+      {
+        userName:`${userName}`,
+        comment:""
+      }
+    )
   }
 
   return (
@@ -48,7 +58,7 @@ function Uploadfeed() {
         <textarea name="Description" id="" className='form-control' rows={9} placeholder='Share your moments here' onChange={(e)=>setFeed({...feed,comment:e.target.value})} value={feed.comment}></textarea>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose1}>
             DISCARD
           </Button>
           <Button variant="primary" onClick={handleUploadFeed}>

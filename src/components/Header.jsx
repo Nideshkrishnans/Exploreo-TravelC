@@ -1,14 +1,34 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import logo from '../assets/logo-Photoroom.png'
+import { Link , useNavigate} from 'react-router-dom';
+import logo from '../assets/logomain.png'
+import { useContext, useEffect, useState } from 'react';
+import { isLoginAuthContext } from '../Contextshare/ContextShare';
+
 
 
 function Header() {
+  const navigate = useNavigate()
+  const {setIsLoginStatus} = useContext(isLoginAuthContext)
+
+  const [userName , setUserName]=useState("")
+
+
+  const logout =()=>{
+    sessionStorage.removeItem("userName")
+    sessionStorage.removeItem("userProfileId")
+    setIsLoginStatus(false)
+    navigate('/')
+
+  }
+
+  useEffect(()=>{
+    if(sessionStorage.getItem("userName")){
+      setUserName(sessionStorage.getItem("userName"))
+    }
+  })
+
   return (
     <>
     <Navbar expand="lg" style={{backgroundColor:"#27192f"}}>
@@ -20,9 +40,10 @@ function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
+            <Link to={'/home'} className='me-md-5 mt-3 mt-md-0 fw-bold'style={{textDecoration:"none",color:"white"}}><>Home</></Link>
             <Link to={'/aboutus'} className='me-md-5 mt-3 mt-md-0 fw-bold'style={{textDecoration:"none",color:"white"}}><>About Us</></Link>
             <Link to={'/profile'} className='me-md-5 mt-3 mt-md-0 fw-bold'style={{textDecoration:"none",color:"white"}}>My Profile</Link>
-            <Link to={'/'}><button className='btn btn-light fw-bold mt-3 mt-md-0'style={{textDecoration:"none"}}>Log Out</button></Link>
+            <button className='btn btn-light fw-bold mt-3 mt-md-0'style={{textDecoration:"none"}} onClick={logout}>Log Out</button>
           </Nav>
         </Navbar.Collapse>
       </Container>

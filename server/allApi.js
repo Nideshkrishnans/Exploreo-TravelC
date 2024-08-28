@@ -51,6 +51,7 @@ export const deleteTripCard = async(id)=>{
     return await commonApi('DELETE',`${serverURl}/host/${id}`,{})
  } 
 
+ //edit profile
  export const updateProfile = async(id,reqBody)=>{
     return await commonApi('PUT',`${serverURl}/profile/${id}`,reqBody)
  } 

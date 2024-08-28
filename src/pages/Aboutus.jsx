@@ -6,7 +6,8 @@ import { VerticalTimeline,VerticalTimelineElement } from 'react-vertical-timelin
 import 'react-vertical-timeline-component/style.min.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
+import amily from '../assets/amily.avif'
+import david from '../assets/david.avif'
 // '#27192f' 'rgb(146, 133, 159)'
 
 function Aboutus() {
@@ -87,7 +88,7 @@ function Aboutus() {
 
     <div className="row d-flex justify-content-center align-items-center">
       <div className="col-md-6 justify-content-center align-items-center">
-        <h1 className='fw-bolder' style={{color:'darkslateblue'}}>what our clients have to say</h1>
+        <h1 className='fw-bolder ps-0 ps-md-5 ' style={{color:'darkslateblue'}}>what our clients have to say</h1>
       </div>
       <div className="col-md-6 d-flex justify-content-center align-items-center flex-column">
         <div className="testcard px-5 py-2 my-4 me-4 " style={{backgroundColor:'darkslateblue',borderRadius:'20px'}}>
@@ -99,43 +100,35 @@ function Aboutus() {
           </div>
 
           </div>
-          <p className='mt-3 text-light'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam facilis rerum voluptatum amet neque, beatae adipisci debitis ex. Asperiores quidem natus laboriosam unde aperiam molestias ea? Iste numquam nulla delectus.</p>
+          <p className='mt-3 text-light'>"As a solo traveler, I was always a bit nervous about exploring new places alone. This app made it easy to find companions with similar interests, and now I never have to worry about venturing out on my own. It's a game-changer for any traveler!"</p>
         </div>
 
         <div className="testcard px-5 py-2 my-4 me-4 " style={{backgroundColor:'darkslateblue',borderRadius:'20px'}}>
           <div className="firstrow d-flex justify-content-start align-items-center">
-          <img src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg" alt="" style={{borderRadius:'50%',width:'70px',height:'70px'}}/>
+          <img src={amily} alt="" style={{borderRadius:'50%',width:'70px',height:'70px'}}/>
           <div className="name justify-content-start align-items-center ms-3">
-          <h4 className=' text-light p-0  mt-2'>John Kooper</h4>
+          <h4 className=' text-light p-0  mt-2'>Amily R</h4>
           {/* <p className='p-0 text-secondary'>trip guide, Trivago</p> */}
           </div>
 
           </div>
-          <p className='mt-3 text-light'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam facilis rerum voluptatum amet neque, beatae adipisci debitis ex. Asperiores quidem natus laboriosam unde aperiam molestias ea? Iste numquam nulla delectus.</p>
+          <p className='mt-3 text-light'>"Traveling has never been more fun! I connected with fellow adventurers through the app and ended up exploring Southeast Asia with a great group of people. It made the experience richer, safer, and much more memorable. Can't wait for my next trip!"</p>
         </div>
 
         <div className="testcard px-5 py-2 my-4 me-4 " style={{backgroundColor:'darkslateblue',borderRadius:'20px'}}>
           <div className="firstrow d-flex justify-content-start align-items-center">
-          <img src="https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg" alt="" style={{borderRadius:'50%',width:'70px',height:'70px'}}/>
+          <img src={david} alt="" style={{borderRadius:'50%',width:'70px',height:'70px'}}/>
           <div className="name justify-content-start align-items-center ms-3">
-          <h4 className=' text-light p-0  mt-2'>John Kooper</h4>
+          <h4 className=' text-light p-0  mt-2'>David M</h4>
           {/* <p className='p-0 text-secondary'>trip guide, Trivago</p> */}
           </div>
 
           </div>
-          <p className='mt-3 text-light'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam facilis rerum voluptatum amet neque, beatae adipisci debitis ex. Asperiores quidem natus laboriosam unde aperiam molestias ea? Iste numquam nulla delectus.</p>
+          <p className='mt-3 text-light'>"This website completely transformed my solo trip! I found an amazing travel buddy who shared my love for hiking and exploring off-the-beaten-path locations. We had an incredible time together, and I made a lifelong friend. Highly recommended!"</p>
         </div>
       </div>
     </div>
 
-
-    <div className="row">
-      <h1 className='text-center my-5'>Contact us</h1>
-      <div className="col-md-6">
-        
-      </div>
-      <div className="col-md-6"></div>
-    </div>
 
     </div>
     

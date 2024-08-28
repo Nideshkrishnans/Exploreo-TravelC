@@ -80,7 +80,7 @@ function Logreg() {
           sessionStorage.setItem("userName",userExists.userName)
           
 
-          navigate('/home')
+          navigate('/profile')
         }
         else{
           alert('incorrect password or email')

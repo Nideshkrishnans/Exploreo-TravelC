@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import user from '../assets/user.png'
 import { deletePostCard } from '../../server/allApi'
 
-function Postfeed({moment}) {
+function Postfeed({moment,setDeletePostStatus}) {
   const [userName,setUserName]=useState(sessionStorage.getItem("userName"))
 
   const handleDeletePost =async(id)=>{
-    deletePostCard(id)
+    const result = await deletePostCard(id)
+    setDeletePostStatus(result.data)
  }
 
 
@@ -15,11 +16,11 @@ function Postfeed({moment}) {
     
     <div style={{backgroundColor:'white'}}>
         <div className='d-flex align-items-center '>
-            <img src={user} alt="" width={'30px'} height={'30px'} />
-            <h6>{moment?.userName}</h6>
+            {/* <img src={user} alt="" width={'30px'} height={'30px'} /> */}
+            <h6 className='font1 fw-bold'>{moment?.userName}</h6>
         </div>
 
-        <p>{moment?.comment}</p>
+        <p className='font2'>{moment?.comment}</p>
         <div className="row">
           <div className="col-10"></div>
           <div className="col-2">

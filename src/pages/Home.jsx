@@ -17,6 +17,10 @@ const ComponentB = lazy(() => import('../components/Postfeed')); */
 
 
 function Home() {
+  const [addHostStatus,setAddHostStatus]=useState([])
+  const [deleteHostStatus,setDeleteHostStatus]=useState([])
+  const [deletePostStatus,setDeletePostStatus]=useState([])
+
   const [component, setComponent] = useState('Feedcard');
   const [show, setShow] = useState(false);
   const [userName,setUserName]=useState(sessionStorage.getItem("userName"))
@@ -34,6 +38,7 @@ function Home() {
     enddate:"",
     price:"",
     people:"",
+    number:"",
     description:""
   })
   //console.log(hostDetails);
@@ -48,14 +53,15 @@ function Home() {
 
   const handleAdd= async (e)=>{
     e.preventDefault()
-    const {userName , title, startingpoint,destination,startdate,enddate,price,people,description}=hostDetails
-    if(!userName || !title|| !startingpoint || !destination|| !startdate || !enddate|| !price|| !people||!description){
+    const {userName , title, startingpoint,destination,startdate,enddate,price,people,number,description}=hostDetails
+    if(!userName || !title|| !startingpoint || !destination|| !startdate || !enddate|| !price|| !people|| !number|| !description){
       alert(`please fill the form completely`)
       
     }
     else{
       const result = await hostApi(hostDetails)
       alert('successfully hosted a trip')
+      setAddHostStatus(result.data)
       setShow(false)
       setHostDetails(
         { 
@@ -67,6 +73,7 @@ function Home() {
           enddate:"",
           price:"",
           people:"",
+          number:"",
           description:""}
       )
       
@@ -84,6 +91,7 @@ function Home() {
         enddate:"",
         price:"",
         people:"",
+        number:"",
         description:""}
     )
 
@@ -92,20 +100,20 @@ function Home() {
   const getAllHostDetails=async()=>{
     const result= await getAllHostApi()
    /*  console.log(result); */
-    setAllHostDetails(result.data)
+    setAllHostDetails(result.data.reverse())
     
   }
 
    const getAllPostDetails=async()=>{
     const result= await getAllPostApi()
      //console.log(result.data); 
-   setAllPostDetails(result.data)
+   setAllPostDetails(result.data.reverse())
     
   }
 
 
-  useEffect(()=>{getAllHostDetails()},[])
-  useEffect(()=>{getAllPostDetails()},[])
+  useEffect(()=>{getAllHostDetails()},[addHostStatus,deleteHostStatus])
+  useEffect(()=>{getAllPostDetails()},[deletePostStatus])
 
 
   return (
@@ -116,7 +124,7 @@ function Home() {
           <div className="col-md-5 p-4 d-flex justify-content-center align-items-center bg-light rounded" >
           <div className="hytcard card rounded d-flex justify-content-center align-items-center" id='hytcard' >
             <div className='' >
-              <h3 className='text-light'>Mood for a trip?</h3>
+              <h3 className='text-light font1'>Mood for a trip?</h3>
               <button className='btn btn-light w-100' variant="primary" onClick={handleShow}>Host a Trip</button>
             </div>
             <div>
@@ -131,15 +139,15 @@ function Home() {
           </div>
           <div className="col-md-7" id='homeleft' style={{overflowY:'scroll', height:'100vh'}}>
 
-            <div className='my-4 '>
+            {<div className='my-4 '>
             <Search/>
-            </div>
+            </div>}
 
              {component === 'Feedcard' ? 
              (allHostDetails ? 
-             allHostDetails?.map((item)=>(<Feedcard trips={item} />)) : <p>No Trips Available</p> ) 
+             allHostDetails?.map((item)=>(<Feedcard trips={item} setDeleteHostStatus={setDeleteHostStatus}/>)) : <p>No Trips Available</p> ) 
              : (allPostDetails ? 
-              allPostDetails?.map((item)=>(<Postfeed moment={item} />)) : <p>No Posts Available</p>)}
+              allPostDetails?.map((item)=>(<Postfeed moment={item} setDeletePostStatus={setDeletePostStatus}/>)) : <p>No Posts Available</p>)}
 
              
    
@@ -166,6 +174,10 @@ function Home() {
           <input type="text" placeholder='Estd. Price in rupees' className='form-control me-2' onChange={(e)=>setHostDetails({...hostDetails,price:e.target.value})} value={hostDetails.price}/>
           <input type="text" placeholder='no.of people' className='form-control' onChange={(e)=>setHostDetails({...hostDetails,people:e.target.value})} value={hostDetails.people}/>
           </div>
+          <div className="mb-3 w-100 d-flex justify-content-center flex-column align-items-center">
+            <input type="text" placeholder='Your watsapp Number' className='form-control w-100' onChange={(e)=>setHostDetails({...hostDetails,number:e.target.value})} value={hostDetails.number}/>
+          </div>
+
           <div className="mb-3 w-100">
          <textarea name="" placeholder='Describe your trip' rows={5} className='form-control' onChange={(e)=>setHostDetails({...hostDetails,description:e.target.value})} value={hostDetails.description}></textarea>
           </div>
